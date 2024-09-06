@@ -73,3 +73,8 @@ h6{
     color: #70b469;
     /* font-weight: bold; */
 }
+
+
+.markdown-preview-view code:not(pre code) {
+    color: #55b0ff;
+}

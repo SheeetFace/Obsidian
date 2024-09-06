@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4b3f6bf9f063163f",
+            "id": "642dc65e9d3d632d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/HTML📄.md",
+                "file": "Programming/Theory/CSS 🎨.md",
                 "mode": "preview",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Programming/Theory/HTML📄.md",
+                "file": "Programming/Theory/CSS 🎨.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Programming/Theory/HTML📄.md",
+                "file": "Programming/Theory/CSS 🎨.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Programming/Theory/HTML📄.md"
+                "file": "Programming/Theory/CSS 🎨.md"
               }
             }
           },
@@ -155,10 +155,12 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "4b3f6bf9f063163f",
+  "active": "642dc65e9d3d632d",
   "lastOpenFiles": [
-    "Programming/Theory/WEB🌐.md",
+    "Programming/Theory/links/Pasted image 20240906111256.png",
     "Programming/Theory/HTML📄.md",
+    "Programming/Theory/WEB🌐.md",
+    "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/ООП.md",
     "Programming/Theory/links/1637610523913.png",
     "Programming/Theory/links/Pasted image 20240902120745.png",
