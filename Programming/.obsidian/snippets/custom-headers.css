@@ -1,0 +1,75 @@
+h1 {
+    background-color: #06604c4b;
+    padding: .4rem; 
+    border-radius: .3rem;
+    text-align: center;
+    margin-top: 3rem !important;
+    border: 1px solid #06604c8d;
+    border-left: 4px solid #06604c; 
+    color:rgba(240, 248, 255, 0.748) !important;
+}
+
+h2 {
+    background-color: #bb00ff2b;
+    padding: .2rem; 
+    border-radius: .3rem;
+    text-align: center;
+}
+
+h3 {
+    background-color: #b7ff0025;
+    padding: .2rem; 
+    border-radius: .3rem;
+    text-align: center;
+}
+
+h6{
+    background-color: #8a5cf527;
+    padding: .2rem; 
+    border-radius: .3rem;
+    text-align: center;
+}
+
+.callout[data-callout="help"] {
+    background-color: #6c6c6c16;
+    border: 1px solid #06604c4b;
+    padding: .7rem;
+    color:#bebebe;
+    border-top: 4px solid #06604c; 
+}
+/* .callout[data-callout="help"] .callout-title {
+    color: #4682b4;
+    font-weight: bold;
+} */
+.callout[data-callout="quote"] {
+    padding: .9rem;
+}
+
+
+.markdown-reading-view h1 .heading-collapse-indicator {
+    margin-left: -1.5em; 
+    padding-right: 0.3em; 
+}
+.markdown-reading-view h1 .heading-collapse-indicator svg {
+    width: 16px; 
+    height: 16px; 
+}
+
+
+.markdown-rendered pre {
+    background-color: #000000;
+}
+
+.markdown-rendered strong {
+    color: #48b43c;
+    /* background-color:rgba(2, 123, 160, 0.107); */
+    /* padding-left: .3rem; */
+    padding-right: .3rem;
+    /* border-radius:.2rem; */
+    /* font-weight: bold; */
+}
+.markdown-rendered em strong,
+.markdown-rendered strong em {
+    color: #70b469;
+    /* font-weight: bold; */
+}

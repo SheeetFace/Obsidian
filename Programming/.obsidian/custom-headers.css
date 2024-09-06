@@ -1,0 +1,26 @@
+/* 
+h1 {
+    color: #ff0000;
+}
+
+h2 {
+    color: #00ff00; 
+}
+
+h3 {
+    color: #0000ff; 
+} */
+
+h1 {
+    background-color: #0e85678e;
+    padding: .3rem;
+    border-radius: .1rem; 
+}
+
+h2 {
+    background-color: #ff00ff; 
+}
+
+h3 {
+    background-color: #00ffff; 
+}

@@ -1,0 +1,55 @@
+{
+  "settings": {
+    "migrated": 6,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "native",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "LiMousePointerSquare",
+      "LiAppWindow",
+      "LiText",
+      "LiFolder"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false,
+    "iconInTitleEnabled": false,
+    "iconInTitlePosition": "above",
+    "iconInFrontmatterEnabled": false,
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconsInLinksEnabled": true,
+    "iconIdentifier": ":",
+    "lucideIconPackType": "native",
+    "debugMode": false
+  },
+  "Programming": {
+    "iconName": "LiFolder",
+    "iconColor": "#007bff"
+  },
+  "Programming/Theory": "LiText",
+  "Programming/Practice": "LiAppWindow",
+  "Programming/Theory/links": "LiFolder",
+  "Programming/Theory/links/web": "LiFolder",
+  "Programming/Theory/WEB🌐.md": {
+    "iconName": "LiText",
+    "iconColor": "#2c949b"
+  },
+  "Programming/Theory/HTML📄.md": {
+    "iconName": "LiText",
+    "iconColor": "#1897a0"
+  },
+  "Programming/Theory/ООП.md": {
+    "iconName": "LiText",
+    "iconColor": "#39979d"
+  }
+}

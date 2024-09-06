@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "c7af74310da175ad",
+    "type": "split",
+    "children": [
+      {
+        "id": "f08857e02584280c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b3f6bf9f063163f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Programming/Theory/HTML📄.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4f885cd0a08a5080",
+    "type": "split",
+    "children": [
+      {
+        "id": "6fee124c361479b8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2e1d89ad7138c5aa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0cee9fbfc0b52354",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "bc03cb43f256de8c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 213.5
+  },
+  "right": {
+    "id": "8143886fb8b79a03",
+    "type": "split",
+    "children": [
+      {
+        "id": "e4812fb5ff9bbb8b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e45ec6d8ee7a91b0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Programming/Theory/HTML📄.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3bf54d420d5aea07",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Programming/Theory/HTML📄.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "cafc7b3e03bf4706",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "3752072e3275f07b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Programming/Theory/HTML📄.md"
+              }
+            }
+          },
+          {
+            "id": "47ae3491e3119073",
+            "type": "leaf",
+            "state": {
+              "type": "side-panel-control-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
+    }
+  },
+  "active": "4b3f6bf9f063163f",
+  "lastOpenFiles": [
+    "Programming/Theory/WEB🌐.md",
+    "Programming/Theory/HTML📄.md",
+    "Programming/Theory/ООП.md",
+    "Programming/Theory/links/1637610523913.png",
+    "Programming/Theory/links/Pasted image 20240902120745.png",
+    "Programming/Theory/links/Pasted image 20240902114330.png",
+    "Programming/Theory/links/web/TCP.md",
+    "Programming/Theory/links/CSS Object Model (CSSOM).md",
+    "Programming/Theory/CSSOM.md",
+    "Pasted image 20240902112129.png",
+    "Programming/Theory/links/web/SSL TSL.md",
+    "SSL",
+    "Programming/Theory/[.md",
+    "Programming/Theory/links/web/DNS.md",
+    "Welcome.md",
+    "Untitled 1",
+    "Programming/Untitled",
+    "Programming/Theory/links/web/IP.md",
+    "Programming/Theory/links/web",
+    "Programming/Theory/links",
+    "Programming/Theory",
+    "Programming/Practice",
+    "Programming"
+  ]
+}
