@@ -55,5 +55,9 @@
   "Programming/Theory/CSS 🎨.md": {
     "iconName": "LiText",
     "iconColor": "#2a9aa2"
+  },
+  "Programming/Theory/JS 💻.md": {
+    "iconName": "LiText",
+    "iconColor": "#2c9da5"
   }
 }
