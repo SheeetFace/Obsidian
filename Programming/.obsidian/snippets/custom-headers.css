@@ -78,3 +78,15 @@ h6{
 .markdown-preview-view code:not(pre code) {
     color: #55b0ff;
 }
+
+
+.markdown-preview-view hr {
+    border: none;
+    height: 1px;
+    background-color: #a882ff70;
+    margin: 10px 0;
+}
+.cm-s-obsidian .cm-hr {
+    background-color: #a882ff70;
+}
+  

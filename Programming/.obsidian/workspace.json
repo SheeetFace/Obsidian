@@ -8,19 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "642dc65e9d3d632d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Programming/Theory/WEB🌐.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3d0294ffc40823ed",
+            "id": "0d35abf2679cf6c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -168,13 +155,13 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "3d0294ffc40823ed",
+  "active": "0d35abf2679cf6c1",
   "lastOpenFiles": [
-    "Programming/Theory/WEB🌐.md",
+    "Programming/Theory/ООП.md",
     "Programming/Theory/JS 💻.md",
+    "Programming/Theory/WEB🌐.md",
     "Programming/Theory/HTML📄.md",
     "Programming/Theory/CSS 🎨.md",
-    "Programming/Theory/ООП.md",
     "Programming/Theory/links/Pasted image 20240906111256.png",
     "Programming/Theory/links/1637610523913.png",
     "Programming/Theory/links/Pasted image 20240902120745.png",
