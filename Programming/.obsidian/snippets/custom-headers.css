@@ -89,4 +89,9 @@ h6{
 .cm-s-obsidian .cm-hr {
     background-color: #a882ff70;
 }
+
+
+.markdown-preview-view code[class*="language-"] .token.comment {
+  color: #6a9955; 
+}
   

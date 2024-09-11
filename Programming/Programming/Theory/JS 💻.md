@@ -342,4 +342,158 @@
 >
 > > [!summary]
 >***Hoisting*** в JavaScript поднимает объявления переменных и функций в начало их области видимости. Это позволяет использовать их до фактического объявления в коде, но важно помнить, что инициализация переменных не поднимается. Переменные, объявленные с помощью `let` и `const`, ведут себя иначе и не доступны до их инициализации.      
+# объявления-функций
+> [!help] 
+>###### Function Declaration (Объявление функции)
+>>```js
+>>function greet(name) {
+>>    console.log(`Hello, ${name}!`);
+>>}
+>>greet("Alice"); // Выведет: Hello, Alice! 
+>>```
+>>**Особенности**:
+>>- Поднимается [(hoisting)](#поднятие(hosting)) в начало своей области видимости.
+>>- Можно вызвать до объявления в коде.
+>>- Имеет свой собственный `this`.
+>>
+>>**Контекст**(`this`):
+>>***Function Declaration*** создает свой собственный контекст выполнения. Значение `this` внутри такой функции зависит от того, как она вызывается.
+>>```js
+>>const obj = {
+>>    name: "John",
+>>    sayHi: function() {
+>>        console.log(`Hi, I'm ${this.name}`);
+>>    }
+>>};
+>>obj.sayHi(); // Выведет: Hi, I'm John
+>>const hi = obj.sayHi;
+>>hi(); // Выведет: Hi, I'm undefined (в нестрогом режиме) или выбросит ошибку (в строгом режиме)
+>>```
+> ###### Function Expression (Функциональное выражение)
+>>```js
+>>const greet = function(name) {
+>>    console.log(`Hello, ${name}!`);
+>>};
+>>greet("Bob"); // Выведет: Hello, Bob!
+>>```
+>>**Особенности**:
+>> - Не поднимается (no hoisting).
+>> - Нельзя вызвать до объявления в коде.
+>> - Может быть анонимной или именованной.
+>> - Имеет свой собственный `this`.
+>>
+>>**Контекст**:
+>>***Function Expression***, как и ***Function Declaration***, создает свой собственный контекст выполнения.
+>>```js
+>>const obj = {
+>>    name: "Sarah",
+>>    sayHi: function() {
+>>        console.log(`Hi, I'm ${this.name}`);
+>>    }
+>>};
+>>obj.sayHi(); // Выведет: Hi, I'm Sarah
+> ###### Arrow Function (Стрелочная функция)
+>>```js
+>>const greet = (name) => {
+>>    console.log(`Hello, ${name}!`);
+>>};
+>>
+>>greet("Charlie"); // Выведет: Hello, Charlie!
+>>```
+>>**Особенности**:
+>> - Более краткий синтаксис.
+>> - Не имеет собственного `this`.
+>> - Не может быть использована как конструктор.
+>> - Не имеет собственного `arguments`.
+>>> [!customname]- Что еще за `arguments`
+>>> В JS, традиционные функции (***Function Declaration*** и ***Function Expression***) имеют доступ к специальному объекту `arguments`. Этот объект содержит все аргументы, переданные функции, даже если они не были объявлены в списке параметров.
+>>>```js
+>>>function regularFunction() {
+>>>   console.log(arguments);
+>>>   console.log(arguments.length);
+>>>   console.log(arguments[0]);
+>>>}
+>>>regularFunction(1, 'a', true);
+>>>// Выведет:
+>>>// [1, 'a', true]
+>>>// 3
+>>>// 1
+>>>```
+>>> Однако стрелочные функции не имеют собственного `arguments`. Если вы попытаетесь получить доступ к arguments внутри стрелочной функции, вы получите `arguments` из внешней (не стрелочной) функции, если такая есть, или ошибку, если внешней функции нет.
+>>>
+>>>---
+>>>
+>>>**Пример со стрелочной функцией:**
+>>>```js
+>>>const arrowFunction = () => {
+>>>    console.log(arguments);
+>>>};
+>>>arrowFunction(1, 'a', true);
+>>>// Выбросит ошибку: ReferenceError: arguments is not defined
+>>>```
+>>>**Пример вложенной стрелочной функции:**
+>>>```js
+>>>function outerFunction() {
+>>>    const arrowFunction = () => {
+>>>        console.log(arguments);
+>>>    };
+>>>    arrowFunction(1, 'a', true);
+>>>}
+>>>outerFunction(4, 5, 6);
+>>>// Выведет: [4, 5, 6]
+>>>// Заметьте, что это аргументы внешней функции, а не стрелочной
+>>
+>> **Контекст**:
+>>Arrow Function не создает свой собственный контекст выполнения. Вместо этого она захватывает this из окружающего лексического контекста.
+>>```js
+>>const obj = {
+>>    name: "Mike",
+>>    sayHi: () => {
+>>        console.log(`Hi, I'm ${this.name}`);
+>>    }
+>>};
+>>obj.sayHi(); // Выведет: Hi, I'm undefined
+>>```
+>
+>**Пример, демонстрирующий разницу в контексте**:
+>>> [!example] 
+>>>```js
+>>>  const obj = {
+>>>    name: "Alice",
+>>>    sayHiRegular: function() {
+>>>        console.log(`Hi, I'm ${this.name}`);
+>>>    },
+>>>    sayHiArrow: () => {
+>>>        console.log(`Hi, I'm ${this.name}`);
+>>>    }
+>>>};
+>>>obj.sayHiRegular(); // Выведет: Hi, I'm Alice
+>>>obj.sayHiArrow();   // Выведет: Hi, I'm undefined
+>>>```
+>>> **Использование в callback'ах**
+>>>```js
+>>>const objWithCallback = {
+>>>    name: "Bob",
+>>>    friends: ["Alice", "Charlie"],
+>>>    greetFriendsRegular: function() {
+>>>        this.friends.forEach(function(friend) {
+>>>            console.log(`${this.name} greets ${friend}`); // this здесь не ссылается на objWithCallback
+>>>        });
+>>>    },
+>>>    greetFriendsArrow: function() {
+>>>        this.friends.forEach((friend) => {
+>>>            console.log(`${this.name} greets ${friend}`); // this здесь ссылается на objWithCallback
+>>>       });
+>>>    }
+>>>};
+>>>objWithCallback.greetFriendsRegular(); // Выведет: undefined greets Alice, undefined greets Charlie
+>>>objWithCallback.greetFriendsArrow();   // Выведет: Bob greets Alice, Bob greets Charlie
+>>>```
+>>>
+>>>**Основные различия**:
+>>> - ***Function Declaration*** поднимается, ***Function Expression*** и ***Arrow Function*** - нет.
+>>> - ***Arrow Function*** не имеет собственного `this`, в отличие от других типов функций.
+>>> - ***Arrow Functio***n имеет более краткий синтаксис.
+>>> - ***Function Declaration*** и ***Function Expression*** могут быть использованы как конструкторы, ***Arrow Function*** - нет.
+>
 # event-loop

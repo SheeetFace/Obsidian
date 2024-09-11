@@ -36,8 +36,14 @@
     "iconName": "LiFolder",
     "iconColor": "#007bff"
   },
-  "Programming/Theory": "LiText",
-  "Programming/Practice": "LiAppWindow",
+  "Programming/Theory": {
+    "iconName": "LiText",
+    "iconColor": "#14f56a"
+  },
+  "Programming/Practice": {
+    "iconName": "LiAppWindow",
+    "iconColor": "#03ab43"
+  },
   "Programming/Theory/links": "LiFolder",
   "Programming/Theory/links/web": "LiFolder",
   "Programming/Theory/WEB🌐.md": {
@@ -59,5 +65,10 @@
   "Programming/Theory/JS 💻.md": {
     "iconName": "LiText",
     "iconColor": "#2c9da5"
-  }
+  },
+  "Programming/AsForJs": {
+    "iconName": "LiFolder",
+    "iconColor": "#a2a503"
+  },
+  "Programming/AsForJs/SEO": "LiFolder"
 }

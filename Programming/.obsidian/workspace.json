@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f08857e02584280c",
+        "id": "e879ccfda1d55982",
         "type": "tabs",
         "children": [
           {
-            "id": "0d35abf2679cf6c1",
+            "id": "2bfd9b5b14e5967b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -155,10 +155,19 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "0d35abf2679cf6c1",
+  "active": "2bfd9b5b14e5967b",
   "lastOpenFiles": [
-    "Programming/Theory/ООП.md",
+    "SEO asForJs/Untitled.md",
+    "Programming/AsForJs/SEO",
+    "Programming/AsForJs/SEO/4. Клиентский кэш___⎡~hubs ~work ~paradise ~audit⎦.md",
+    "Programming/AsForJs/SEO/7. Семантика тега strong и тега b .md",
+    "4.hubsworkparadiseaudit 1.html",
+    "4.hubsworkparadiseaudit.html",
+    "Programming/AsForJs/SEO/08.07._IPTC Метатетеги.md",
+    "Programming/AsForJs",
+    "08.07._IPTC Метатетеги.docx",
     "Programming/Theory/JS 💻.md",
+    "Programming/Theory/ООП.md",
     "Programming/Theory/WEB🌐.md",
     "Programming/Theory/HTML📄.md",
     "Programming/Theory/CSS 🎨.md",
@@ -179,9 +188,6 @@
     "Programming/Untitled",
     "Programming/Theory/links/web/IP.md",
     "Programming/Theory/links/web",
-    "Programming/Theory/links",
-    "Programming/Theory",
-    "Programming/Practice",
-    "Programming"
+    "Programming/Theory/links"
   ]
 }
