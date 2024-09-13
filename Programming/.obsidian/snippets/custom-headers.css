@@ -11,6 +11,7 @@ h1 {
 
 h2 {
     background-color: #bb00ff2b;
+    /* background-color: #0080ff2b; */
     padding: .2rem; 
     border-radius: .3rem;
     text-align: center;
@@ -24,11 +25,16 @@ h3 {
 }
 
 h6{
-    background-color: #8a5cf527;
+    /* background-color: #8a5cf527; */
+        background-color: #00ff5e2f;
     padding: .2rem; 
     border-radius: .3rem;
     text-align: center;
 }
+
+.markdown-preview-view blockquote {
+    border-left-color:#00ff5e2f;
+  }
 
 .callout[data-callout="help"] {
     background-color: #6c6c6c16;
@@ -43,6 +49,10 @@ h6{
 } */
 .callout[data-callout="quote"] {
     padding: .9rem;
+}
+.callout[data-callout="example"] {
+    padding: .7rem;
+    background-color: #b681ff16;
 }
 
 
@@ -95,3 +105,12 @@ h6{
   color: #6a9955; 
 }
   
+
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.markdown-source-view.is-readable-line-width .cm-contentContainer {
+  max-width: 800px !important;
+}
+
+img{
+    border-radius:.6rem;
+}

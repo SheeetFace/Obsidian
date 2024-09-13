@@ -729,4 +729,165 @@
 >> - Изменения в объекте-прототипе отражаются на всех объектах, которые его используют.
 >>`.prototype` используется для функций-конструкторов и классов, чтобы создавать общие методы для всех объектов, созданных через них.
 >> - Примитивные типы данных, такие как строки и числа, временно преобразуются в объектные обёртки, что позволяет расширять их прототипы методами (например, добавление метода в `String.prototype`).
+
+# this
+> [!help] 
+>>[!quote]
+>>`this` - это ключевое слово, которое ссылается на контекст выполнения функции. 
+>
+>Значение `this` может меняться в зависимости от того, как функция вызывается.
+> ###### Основные правила определения `this`: 
+>>1. **Глобальный контекст**:
+>>      - В браузере: `this` указывает на объект `window`
+>>      - В Node.js: `this` указывает на глобальный объект `global`
+>>2. **Внутри функции (простой вызов)**:
+>>      - В строгом режиме `('use strict')`: `this` будет `undefined`
+>>      - В нестрогом режиме: `this` будет глобальным объектом
+>>3. **Метод объекта**:
+>>      - `this` указывает на объект, который вызывает метод 
+>>4. **Конструктор**:
+>>      - `this` указывает на новосозданный объект 
+>>5. **Стрелочные функции**:
+>>      - `this` берется из окружающего лексического контекста
+>
+>>[!example] Глобальный контекст
+>>```javascript
+>>console.log(this); // window в браузере, global в Node.js
+>>```
+>
+>>[!example] Простой вызов функции
+>>```javascript
+>>function simpleFunc() {
+>>    console.log(this);
+>>}
+>>simpleFunc(); // window в браузере (нестрогий режим), undefined в строгом режиме
+>>```
+>
+>>[!example] Метод объекта
+>>```javascript
+>>let obj = {
+>>    method: function() {
+>>        console.log(this);
+>>    }
+>>};
+>>obj.method(); // {method: ƒ} в браузере
+>>```
+>
+>>[!example] Конструктор
+>>```javascript
+>>function Constructor() {
+>>    console.log(this);
+>>}
+>>new Constructor(); // новый объект Constructor {}
+>>```
+>
+>>[!example] Стрелочная функция
+>>```javascript
+>>let arrowFunc = () => {
+>>    console.log(this);
+>>};
+>>arrowFunc(); // window в браузере, global в Node.js
+>>```
+>
+> ###### Методы изменения контекста: 
+>>
+>>>[!example] Вызывает функцию с заданным `this` и аргументами, переданными отдельно.
+>>>```javascript
+>>>function greet(greeting) {
+>>>    console.log(greeting + ', ' + this.name);
+>>>}
+>>
+>>>[!example]  **call()**
+>>>```javascript
+>>>let person = { name: 'John' };
+>>>greet.call(person, 'Hello'); // "Hello, John"
+>>>```
+>>
+>>>[!example] **apply()** - gохож на **call()**, но аргументы передаются массивом
+>>>```javascript
+>>>greet.apply(person, ['Hi']); // "Hi, John"
+>>>```
+>>
+>>>[!example] **bind()** - cоздает новую функцию с привязанным контекстом.
+>>>```javascript
+>>>let boundGreet = greet.bind(person);
+>>>boundGreet('Hey'); // "Hey, John"
+>>>```
+>>
+> ###### Особые случаи: 
+>>1. **События DOM (в браузере)**:
+>>>[!example] `this` указывает на элемент, который вызвал событие
+>>>```javascript
+>>>document.querySelector('button').addEventListener('click', function() {
+>>>    console.log(this); // <button> элемент
+>>>});
+>>>```
+>>
+>>2. **Стрелочные функции как методы:**:
+>>>[!example] `this` будет `undefined` в стрелочной фукнции
+>>>```javascript
+>>>let obj = {
+>>>    name: 'Object',
+>>>    arrowMethod: () => {
+>>>        console.log(this.name);
+>>>    },
+>>>    regularMethod: function() {
+>>>        console.log(this.name);
+>>>    }
+>>>};
+>>>
+>>>obj.arrowMethod();   // undefined (this указывает на глобальный объект)
+>>>obj.regularMethod(); // "Object"
+>>>```
+>>
+>>
+>>3. **`this` в присвоеннх переменных**:
+>>>>[!example] основной обьект
+>>>>```javascript
+>>>>let person = {
+>>>>    name: "John",
+>>>>   sayHello: function() {
+>>>>        return "Hello, my name is " + this.name;
+>>>>    }
+>>>>};
+>>>
+>>>>[!example] присваеваем в перменную, но без вызова - `undefined`
+>>>>```javascript
+>>>>const a = person.sayHello
+>>>console.log(a()) // "Hello, my name is undefined"
+>>>>```
+>>>Здесь мы присваиваем функцию `person.sayHello` переменной `a` без вызова. Когда мы затем вызываем `a()`, это происходит в глобальном контексте (или в контексте `undefined` в строгом режиме). `this` внутри функции не ссылается на `person`, поэтому `this.name` становится `undefined`.
+>>>
+>>>>[!example] присваеваем в перменную и вызываем
+>>>>```javascript
+>>>>const b = person.sayHello()
+>>>>console.log(b) // "Hello, my name is John"
+>>>>```
+>>>Здесь мы вызываем `person.sayHello()` сразу при присваивании. Функция выполняется в контексте объекта `person`, возвращает строку, и эта строка присваивается переменной `b`.
+>>5. **`this` в классах**:
+>>>[!example] 
+>>>```javascript
+>>>class MyClass {
+>>>    constructor(name) {
+>>>        this.name = name;
+>>>    }
+>>>    
+>>>    greet() {
+>>>        console.log('Hello, ' + this.name);
+>>>    }
+>>>    
+>>>    // Стрелочный метод
+>>>    arrowGreet = () => {
+>>>       console.log('Arrow hello, ' + this.name);
+>>>    }
+>>>}
+>>>
+>>>let instance = new MyClass('Instance');
+>>>instance.greet();      // "Hello, Instance"
+>>>instance.arrowGreet(); // "Arrow hello, Instance"
+>>>```
+>>
+> ###### Как понять что в `this`:
+>>![[Pasted image 20240913123330.png]]
+
 # event-loop
