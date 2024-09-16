@@ -890,4 +890,75 @@
 > ###### Как понять что в `this`:
 >>![[Pasted image 20240913123330.png]]
 
+# call-bind-apply
+> [!help] 
+>>[!quote]
+>>**call**, **bind** и **apply** - это методы в JS, которые позволяют манипулировать контекстом выполнения функции ([`this`](#this)) и передавать аргументы.
+>>Синтаксис: `function.call(thisArg, arg1, arg2, ...)`
+>---
+>>>[!quote] **call()**
+>>>**call()** вызывает функцию с заданным значением [`this`](#this) и индивидуально предоставленными аргументами.
+>>
+>>>[!example] 
+>>>```js 
+>>>const person = {
+>>>    fullName: function(city, country) {
+>>>        console.log(this.firstName + " " + this.lastName + " lives in " + city + ", " + country);
+>>>    }
+>>>}
+>>>
+>>>const person1 = {
+>>>    firstName:"John",
+>>>    lastName: "Doe"
+>>>}
+>>>
+>>>person.fullName.call(person1, "New York", "USA");
+>>>// Выведет: John Doe lives in New York, USA
+>>>```
+>>> В этом примере мы используем **call**, чтобы выполнить метод `fullName` объекта `person` в контексте объекта `person1`.
+>>
+>---
+>>>[!quote] **apply()**
+>>>**apply()** похож на **call()**, но принимает аргументы как массив.
+>>>Синтаксис: `function.apply(thisArg, [argsArray])`
+>>
+>>>[!example] 
+>>>```js 
+>>>const person = {
+>>>    introduce: function(greeting, punctuation) {
+>>>        return greeting + ", I'm " + this.name + punctuation;
+>>>    }
+>>>};
+>>>
+>>>const john = { name: "John" };
+>>>const mary = { name: "Mary" };
+>>>
+>>>console.log(person.introduce.apply(john, ["Hello", "!"])); // Выведет: "Hello, I'm John!"
+>>>console.log(person.introduce.apply(mary, ["Hi", "?"])); // Выведет: "Hi, I'm Mary?"
+>>>```
+>>> Здесь **apply** позволяет нам использовать метод `introduce` с разными объектами, передавая аргументы в виде массива.
+>>
+>---
+>>>[!quote] **bind()**
+>>>**bind()** создает новую функцию, которая при вызове устанавливает в качестве контекста выполнения `this` предоставленное значение.
+>>>Синтаксис: `function.bind(thisArg, arg1, arg2, ...)`
+>>
+>>>[!example] 
+>>>```js 
+>>>const user = {
+>>>    name: "Alice",
+>>>    sayHello: function() {
+>>>        console.log("Hello, I'm " + this.name);
+>>>    }
+>>>};
+>>>
+>>>const sayHelloFunc = user.sayHello;
+>>>sayHelloFunc(); // Выведет: "Hello, I'm undefined"
+>>>
+>>>const boundSayHello = user.sayHello.bind(user);
+>>>boundSayHello(); // Выведет: "Hello, I'm Alice"
+>>>```
+>>>В этом примере **bind** создает новую функцию с привязанным контекстом, что особенно полезно при передаче методов в качестве колбэков.
+>
+
 # event-loop
