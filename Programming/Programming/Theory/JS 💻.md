@@ -1220,4 +1220,212 @@
 >>console.log('' == false);  // true
 >>console.log('' === false); // false
 >>```
+# логические-операторы
+> [!help] 
+>>[!quote] **Логические операторы в JS**
+>> ***(Расположены по приоритету)*** 
+>> - **!** (НЕ)
+>> - **&&** (И)
+>> - **||** (ИЛИ)
+>> - **??** (Оператор нулевого слияния)
+>
+>>[!note] **Порядок приоритета операторов** (от высшего к низшему):
+>> 1. **()** (скобки)
+>> 2. **!** (логическое НЕ)
+>> 3. ***, /, %** (умножение, деление, остаток)
+>> 4. **+**, **-** (сложение, вычитание)
+>> 5. **<**, **<=**, **>**, **>** **=** (сравнения)
+>> 6. **==**, **!=**, **===**, **!==** (равенство/неравенство)
+>> 7. **&&** (логическое И)
+>> 8. **||** (логическое ИЛИ)
+>> 9. **??** (оператор нулевого слияния)
+>
+>###### ! (НЕ)
+>>>[!quote]
+>>> - **Инвертирует булево значение операнда.**
+>>> - **Приводит значение к булеву типу, затем инвертирует его.**
+>>```js 
+>>console.log(!true);  // false
+>>console.log(!false);  // true
+>>console.log(!0);  // true
+>>console.log(!'');  // true
+>>console.log(!1);  // false
+>>console.log(!'hello');  // false
+>>```
+>
+>###### && (И)
+>>>[!quote]
+>>> - **Возвращает `true`, если оба операнда истинны.**
+>>> - **Возвращает первое ложное значение или последний операнд, если все истинны.**
+>>```js 
+>>console.log(true && true);  // true
+>>console.log(true && false);  // false
+>>console.log(false && true);  // false
+>>console.log(false && false);  // false
+>>console.log(1 && 2);  // 2
+>>console.log(0 && 1);  // 0
+>>console.log('a' && 'b');  // 'b'
+>>console.log('' && 'b');  // ''
+>>```
+>
+>###### || (ИЛИ)
+>>>[!quote]
+>>> - **Возвращает `true`, если хотя бы один операнд истинен.**
+>>> - **Возвращает первое истинное значение или последний операнд, если все ложны.**
+>>```js 
+>>console.log(true || true);  // true
+>>console.log(true || false);  // true
+>>console.log(false || true);  // true
+>>console.log(false || false);  // false
+>>console.log(1 || 2);  // 1
+>>console.log(0 || 1);  // 1
+>>console.log('' || 'b');  // 'b'
+>>console.log(null || undefined);  // undefined
+>
+>###### ?? (Оператор нулевого слияния)
+>>>[!quote]
+>>> - **Возвращает правый операнд, если левый операнд `null` или `undefined`.**
+>>> - **В противном случае возвращает левый операнд.**
+>>```js 
+>>console.log(null ?? 'default');  // 'default'
+>>console.log(undefined ?? 'default');  // 'default'
+>>console.log(0 ?? 'default');  // 0
+>>console.log('' ?? 'default');  // ''
+>>console.log(false ?? 'default');  // false
+>
+>>[!info] Важно отметить
+>> - Операторы **&&** и **||** используют короткозамкнутое вычисление. Это означает, что если результат может быть определен по первому операнду, второй операнд не вычисляется.
+>> - Оператор **??** был добавлен в ECMAScript 2020 и может не поддерживаться в старых браузерах.
+>> - При использовании нескольких операторов рекомендуется использовать скобки для явного указания порядка выполнения операций.
+>###### Примеры
+>>[!example] 
+>>```js 
+>>console.log(true && false || true && !false && (!true || false) && !(false || !true));
+>>``` 
+>>Разберем по шагам:
+>>1. `!false = true`
+>>2. `!true = false`
+>>3. `(false || !true) = (false || false) = false`
+>>4. `!(false || !true) = !false = true`
+>>5. `true && false = false`
+>>6. `true && true = true`
+>>7. `false || true = true`
+>>8. `true && false = false`
+>>9. `false && true = false`
+>>
+>>Итоговый результат: ***false***
+>
+>>[!example] 
+>>```js 
+>>let a = 5, b = 10, c = 15;
+>>console.log((a > b || b < c) && !(a > c) && (b - a > a - c || c % a === 0));
+>>``` 
+>>Разберем по шагам:
+>>1. `a > b = false (5 > 10)`
+>>2. `b < c = true (10 < 15)`
+>>3. `(a > b || b < c) = (false || true) = true`
+>>4. `a > c = false (5 > 15)`
+>>5. `!(a > c) = !false = true`
+>>6. `b - a = 5, a - c = -10`
+>>7. `b - a > a - c = true (5 > -10)`
+>>8. `c % a = 0 (15 % 5 = 0)`
+>>9. `(b - a > a - c || c % a === 0) = (true || true) = true`
+>>10. `true && true && true = true`
+>>
+>>Итоговый результат: ***true***
+>
+>>[!example] 
+>>```js 
+>>let x = null, y = undefined, z = '';
+>>console.log((!x && y) || (z ?? 'default') !== '' && typeof x === typeof y);
+>>```
+>>Разберем по шагам:
+>>
+>>1. `!x = true (так как x = null)`
+>>2. `(!x && y) = (true && undefined) = undefined`
+>>3. `(z ?? 'default') = '' (так как z - пустая строка, а не null или undefined)`
+>>4. `'' !== '' = false`
+>>5. `typeof x = 'object' (в JS null имеет тип 'object')`
+>>6. `typeof y = 'undefined'`
+>>7. `typeof x === typeof y = false`
+>>8. `false && false = false`
+>>9. `undefined || false = false`
+>>
+>> Итоговый результат: ***false***
+# typeof-разных-типов-данных
+> [!help] 
+>>[!quote] **Основные типы данных и результаты typeof**
+>>```js 
+>>console.log(typeof undefined);     // "undefined"
+>>console.log(typeof null);          // "object"
+>>console.log(typeof true);          // "boolean"
+>>console.log(typeof 42);            // "number"
+>>console.log(typeof "hello");       // "string"
+>>console.log(typeof Symbol());      // "symbol"
+>>console.log(typeof function(){});  // "function"
+>>console.log(typeof {});            // "object"
+>>console.log(typeof []);            // "object"
+>>console.log(typeof NaN);           // "number"
+>>console.log(typeof new Number(42));// "object"
+>>```
+###### Подводные камни и особенности:
+>>[!info] **null**
+>>```js 
+>>console.log(typeof null);  // "object"
+>>```
+>>Это известная ошибка в JS, которая существует с самого начала. `null` не является объектом, но `typeof null` возвращает `"object"`. Это считается багом языка, который не может быть исправлен из-за обратной совместимости.
+>
+>>[!info] **Массивы**
+>>```js 
+>>console.log(typeof []);  // "object"
+>>```
+>>Массивы - это объекты, поэтому `typeof` возвращает `"object"`. Чтобы проверить, является ли что-то массивом, используйте `Array.isArray([])`
+>>
+>>```js 
+>>console.log(Array.isArray([]));  // true
+>>```
+>
+>>[!info] **NaN**
+>>```js 
+>>console.log(typeof NaN);  // "number"
+>>```
+>>`NaN` (Not a Number) парадоксально имеет тип `"number"`. Чтобы проверить на `NaN`, используйте `isNaN(NaN)`
+>>```js 
+>>console.log(isNaN(NaN));  // true
+>>```
+>
+>>[!info] **Функции**
+>>```js 
+>>console.log(typeof function(){});  // "function"
+>>```
+>>Несмотря на то, что функции в JS являются объектами, `typeof` возвращает `"function"`.
+>
+>>[!info] **BigInt**
+>>```js 
+>>console.log(typeof 1n);  // "bigint"
+>>```
+>>BigInt - это относительно новый тип данных в JavaScript для работы с большими целыми числами.
+>>
+>
+>>[!info] **Объекты-обертки**
+>>```js 
+>>console.log(typeof new Number(42));   // "object"
+>>console.log(typeof new String("hi")); // "object"
+>>console.log(typeof new Boolean(true));// "object"
+>>```
+>>Использование конструкторов создает объекты-обертки, а не примитивы.
+>
+>>[!info] **Неопределенные переменные**
+>>```js 
+>>console.log(typeof undeclaredVariable);  // "undefined"
+>>```
+>>`typeof` не вызывает ошибку для необъявленных переменных, что может быть полезно для проверки существования переменных.
+>
+>>[!info] **document** и **window**
+>>```js 
+>>console.log(typeof document);  // "object"
+>>console.log(typeof window);    // "object"
+>>```
+>>Эти глобальные объекты браузера также имеют тип `"object"`.
+
 # event-loop
