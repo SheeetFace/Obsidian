@@ -1525,7 +1525,52 @@
 >>      - ***Почему так***: Здесь JS также пытается преобразовать ***массив в число***, но массив с более чем одним элементом не может быть напрямую преобразован в число. Попытка преобразования `[1,2]` в число дает `NaN`. Любая арифметическая операция с `NaN` всегда дает `NaN`.
 >
 >>Важно помнить, что многие из этих операций основаны на неявном приведении типов в JS. Хотя некоторые из них могут показаться нелогичными, они следуют определенным правилам языка. В профессиональной разработке рекомендуется избегать полагаться на такие неявные преобразования и использовать явное приведение типов для улучшения читаемости и предсказуемости кода.
-
+# создание-массива
+> [!help] 
+>>[!info] **Array.from()**
+>>Создает новый массив из массивоподобного или итерируемого объекта
+>>```js
+>>let arrayFromString = Array.from('hello');
+>>console.log(arrayFromString); // ['h', 'e', 'l', 'l', 'o']
+>>
+>>let arrayFromSet = Array.from(new Set([1, 2, 3, 2, 1]));
+>>console.log(arrayFromSet); // [1, 2, 3]
+>>
+>>let arrayWithMap = Array.from([1, 2, 3], x => x * 2);
+>>console.log(arrayWithMap); // [2, 4, 6]
+>>```
+>
+>>[!info] **Заполнение массива**
+>>Создание и заполнение массива значениями
+>>```js
+>>let filledArray = new Array(3).fill('a');
+>>console.log(filledArray); // ['a', 'a', 'a']
+>>
+>>let numberedArray = Array.from({length: 5}, (_, i) => i + 1);
+>>console.log(numberedArray); // [1, 2, 3, 4, 5]
+>>```
+>
+>>[!info] **Spread оператор**
+>>Раскрывает итерируемый объект в список элементов
+>>```js
+>>let arr1 = [1, 2, 3];
+>>let arr2 = [...arr1, 4, 5];
+>>console.log(arr2); // [1, 2, 3, 4, 5]
+>>
+>>let arrFromString = [...'hello'];
+>>console.log(arrFromString); // ['h', 'e', 'l', 'l', 'o']
+>>```
+>
+>>[!info] **Array.prototype.slice()**
+>>Создает новый массив, копируя часть существующего
+>>```js
+>>let original = [1, 2, 3, 4, 5];
+>>let copy = original.slice();
+>>console.log(copy); // [1, 2, 3, 4, 5]
+>>
+>>let partial = original.slice(1, 4);
+>>console.log(partial); // [2, 3, 4]
+>>```
 # методы-массива
 > [!help] 
 >>[!info]- **push()**
@@ -1812,7 +1857,75 @@
 >>let resultFromEnd = arr.includes(1, -1);
 >>console.log(resultFromEnd); // false
 >>```
-
+# статические-методы-массива
+> [!help] **Статические методы Array**
+>>[!quote] 
+>>Это методы, которые вызываются непосредственно на ***конструкторе*** `Array`, а не на экземплярах массива
+>>Они не являются методами прототипа
+>
+>>**Основные статические методы `Array`**:
+>>1. `Array.from()`
+>>2. `Array.isArray()`
+>>3. `Array.of()`
+>
+>>[!note] **Array.from()**
+>> - Создает новый массив из массивоподобного или итерируемого объекта
+>> - Часто используется для преобразования DOM-коллекций, строк или объектов в массивы
+>>```js
+>>// Преобразование строки в массив
+>>let arr1 = Array.from('hello');
+>>console.log(arr1); // ['h', 'e', 'l', 'l', 'o']
+>>
+>>// Преобразование Set в массив
+>>let set = new Set([1, 2, 3, 2, 1]);
+>>let arr2 = Array.from(set);
+>>console.log(arr2); // [1, 2, 3]
+>>
+>>// Создание массива с использованием функции отображения
+>>let arr3 = Array.from({length: 5}, (_, index) => index * 2);
+>>console.log(arr3); // [0, 2, 4, 6, 8]
+>>```
+>
+>>[!note] **Array.isArray()**
+>> - Проверяет, является ли переданный аргумент массивом
+>> - Возвращает true для массивов и false для всех остальных типов
+>>```js
+>>console.log(Array.isArray([1, 2, 3])); // true
+>>console.log(Array.isArray('hello')); // false
+>>console.log(Array.isArray(new Set())); // false
+>>
+>>// Полезно для проверки типа в функциях
+>>function processArray(arr) {
+>>    if (Array.isArray(arr)) {
+>>        return arr.length;
+>>    } else {
+>>        return 'Argument is not an array';
+>>    }
+>>}
+>>console.log(processArray([1, 2, 3])); // 3
+>>console.log(processArray('hello')); // 'Argument is not an array'
+>>```
+>
+>>[!note] **Array.of()**
+>> - Создает новый массив с переменным числом аргументов
+>> - Особенно полезен, когда нужно создать массив с одним элементом
+>>```js
+>>let arr1 = Array.of(7);
+>>console.log(arr1); // [7]
+>>
+>>let arr2 = Array.of(1, 2, 3);
+>>console.log(arr2); // [1, 2, 3]
+>>
+>>// Сравните с обычным конструктором Array:
+>>let arr3 = new Array(7);
+>>console.log(arr3); // [empty × 7]
+>>
+>>// Array.of() полезен в функциях с переменным числом аргументов
+>>function createArray(...args) {
+>>    return Array.of(...args);
+>>}
+>>console.log(createArray(1, 'two', {three: 3})); // [1, 'two', {three: 3}]
+>>```
 # методы-строк
 > [!help] 
 >>[!info]- **length**
@@ -1957,6 +2070,400 @@
 >>let str = "5";
 >>console.log(str.padEnd(3, "0")); // "500"
 >>```
+
+# статические-методы-обьектов
+>[!help]
+>>[!info]- **Object.assign()**
+>>Копирует значения всех перечисляемых свойств из одного или более исходных объектов в целевой объект
+>>```js
+>>const target = { a: 1, b: 2 };
+>>const source = { b: 4, c: 5 };
+>>const returnedTarget = Object.assign(target, source);
+>>console.log(target); // { a: 1, b: 4, c: 5 }
+>>```
+>
+>>[!info]- **Object.create()**
+>>Создает новый объект с указанным прототипом и свойствами
+>>```js
+>>const person = {
+>>    isHuman: false,
+>>    printIntroduction: function() {
+>>        console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+>>    }
+>>};
+>>const me = Object.create(person);
+>>me.name = "Matthew";
+>>me.isHuman = true;
+>>me.printIntroduction(); // My name is Matthew. Am I human? true
+>>```
+>
+>>[!info]- **Object.entries()**
+>> - Возвращает массив собственных перечисляемых свойств указанного объекта в формате `[key, value]`
+>>  - Противоположный ему метод это - `Object.fromEntries()` - преобразует список пар ключ-значение в объект
+>>
+>>***Проще говоря, массив массивов получается из объекта***
+>>```js
+>>const object1 = { a: 'somestring', b: 42 };
+>>for (const [key, value] of Object.entries(object1)) {
+>>    console.log(`${key}: ${value}`);
+>>}
+>>// "a: somestring"
+>>// "b: 42"
+>>```
+>>###### Подробнее про `Object.entries()`
+>>>1. ***Преобразование объекта в итерируемую структуру***:
+>>>    - `Object.entries()` преобразует объект в массив пар `[ключ, значение]`, что действительно позволяет использовать методы массива для работы с данными объекта.
+>>>2. ***Доступ к ключам и значениям одновременно***:
+>>>    - В отличие от `Object.keys()` или `Object.values()`, `Object.entries()` дает доступ и к ключам, и к значениям одновременно, что удобно во многих ситуациях.
+>>>3. ***Упрощение итерации***:
+>>>    - Хотя можно использовать цикл `for...in` для перебора свойств объекта, `Object.entries()` предоставляет более структурированный способ работы с парами ключ-значение.
+>>>4. ***Преобразование форматов данных***:
+>>>    - Метод упрощает преобразование объектов в другие форматы данных и обратно (например, в `Map` или в массив).
+>>>5. ***Деструктуризация***:
+>>>    - Результат `Object.entries()` легко деструктурировать, что делает код более читаемым и лаконичным.
+>>>
+>>>>[!example] Пример, демонстрирующий несколько из этих аспектов:
+>>>>```js 
+>>>>const person = {
+>>>>    name: "Alice",
+>>>>    age: 30,
+>>>>    city: "New York"
+>>>>};
+>>>>
+>>>>// Преобразование и фильтрация
+>>>>const adultInfo = Object.entries(person)//[ ['name','Alice'],['age',30],['city','New York'] ]
+>>>>    .filter(([key, value]) => key !== 'age' || value >= 18)
+>>>>    .map(([key, value]) => `${key}: ${value}`)
+>>>>    .join(', ');
+>>>>
+>>>>console.log(adultInfo); // "name: Alice, age: 30, city: New York"
+>>>>
+>>>>// Преобразование в Map
+>>>>const personMap = new Map(Object.entries(person));
+>>>>console.log(personMap.get('name')); // "Alice"
+>>>>
+>>>>// Функциональное преобразование объекта
+>>>>const upperCasePerson = Object.fromEntries(
+>>>>    Object.entries(person).map(([key, value]) => [key.toUpperCase(), value])
+>>>>);
+>>>>console.log(upperCasePerson); // { NAME: "Alice", AGE: 30, CITY: "New York" }
+>>>>```
+>>###### Еще Примеры
+>>>[!example] Преобразование объекта в `Map`
+>>>```js 
+>>>const obj = { name: 'John', age: 30 };
+>>>const map = new Map(Object.entries(obj));
+>>>console.log(map); // Map(2) { 'name' => 'John', 'age' => 30 }
+>>>```
+>>
+>>>[!example] Использование с методами массивов
+>>>```js 
+>>>const obj = { apple: 10, banana: 5, orange: 15 };
+>>>
+>>>// Фильтрация
+>>>const expensiveFruits = Object.entries(obj).filter(([_, price]) => price > 10);
+>>>console.log(expensiveFruits); // [['orange', 15]]
+>>>
+>>>// Сортировка
+>>>const sortedFruits = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+>>>console.log(sortedFruits); // [['orange', 15], ['apple', 10], ['banana', 5]]
+>>>
+>>>// Трансформация
+>>>const fruitInventory = Object.entries(obj).map(([fruit, count]) => `${count} ${fruit}s`);
+>>>console.log(fruitInventory); // ['10 apples', '5 bananas', '15 oranges']
+>>>```
+>>
+>>>[!example] Деструктуризация в функциях
+>>>```js 
+>>>function logEntries(entries) {
+>>>    entries.forEach(([key, value]) => {
+>>>        console.log(`${key}: ${value}`);
+>>>    });
+>>>}
+>>>
+>>>const person = { name: 'Alice', age: 25 };
+>>>logEntries(Object.entries(person));
+>>>// name: Alice
+>>>// age: 25
+>>>```
+>>
+>>>[!example] Создание объекта с измененными ключами
+>>>```js 
+>>>const obj = { firstName: 'John', lastName: 'Doe' };
+>>>const swappedObj = Object.fromEntries(
+>>>    Object.entries(obj).map(([key, value]) => [value, key])
+>>>);
+>>>console.log(swappedObj); // { John: 'firstName', Doe: 'lastName' }
+>>>```
+>>
+>>>[!example] Вычисление статистики:
+>>>```js 
+>>>const scores = { John: 85, Alice: 92, Bob: 78 };
+>>>const averageScore = Object.entries(scores).reduce((sum, [_, score]) => sum + score, 0) / Object.keys(scores).length;
+>>>console.log(averageScore); // 85
+>>>```
+>>
+>>>[!example] Проверка наличия определенных пар ключ-значение:
+>>>```js
+>>>const requiredProps = [['name', 'John'], ['age', 30]];
+>>>const obj = { name: 'John', age: 30, city: 'New York' };
+>>>
+>>>const hasAllRequired = requiredProps.every(([key, value]) => 
+>>>   Object.entries(obj).some(([k, v]) => k === key && v === value)
+>>>);
+>>>console.log(hasAllRequired); // true
+>>>```
+>>
+>>>[!example] Создание нового объекта с измененными значениями:
+>>>```js
+>>>const prices = { apple: 0.5, banana: 0.3, orange: 0.6 };
+>>>const discountedPrices = Object.fromEntries(
+>>>    Object.entries(prices).map(([fruit, price]) => [fruit, price * 0.9])
+>>>);
+>>>console.log(discountedPrices); // { apple: 0.45, banana: 0.27, orange: 0.54 }
+>>>```
+>
+>>[!info]- **Object.fromEntries()**
+>> - Преобразует список пар ключ-значение в объект
+>> - метод, который выполняет обратное действие `Object.entries()`. Он преобразует список пар ключ-значение в объект.
+>>```js
+>>const entries = new Map([['foo', 'bar'],['baz', 42]]);
+>>const obj = Object.fromEntries(entries);
+>>console.log(obj); // { foo: "bar", baz: 42 }
+>>```
+>>###### Еще Примеры
+>>>>[!example] Базовое использование:
+>>>>```js 
+>>>>const entries = [['name', 'Alice'], ['age', 30], ['city', 'New York']];
+>>>>const obj = Object.fromEntries(entries);
+>>>>console.log(obj);
+>>>>// { name: 'Alice', age: 30, city: 'New York' }
+>>>>```
+>>>
+>>>>[!example] Преобразование Map в объект:
+>>>>```js 
+>>>>const map = new Map([
+>>>>    ['fruit', '🍎'],
+>>>>    ['vegetable', '🥕'],
+>>>>    ['meat', '🍗']
+>>>>]);
+>>>>const obj = Object.fromEntries(map);
+>>>>console.log(obj);
+>>>>// { fruit: '🍎', vegetable: '🥕', meat: '🍗' }
+>>>
+>>>>[!example] Фильтрация свойств объекта:
+>>>>```js 
+>>>>const person = { name: 'Bob', age: 25, city: 'London', country: 'UK' };
+>>>>const filteredObj = Object.fromEntries(
+>>>>    Object.entries(person).filter(([key]) => ['name', 'age'].includes(key))
+>>>>);
+>>>>console.log(filteredObj);
+>>>>// { name: 'Bob', age: 25 }
+>>>
+>>>>[!example] Трансформация ключей или значений объекта:
+>>>>```js
+>>>>const prices = { apple: 0.5, banana: 0.3, orange: 0.6 };
+>>>>const discountedPrices = Object.fromEntries(
+>>>>    Object.entries(prices).map(([fruit, price]) => [fruit, price * 0.9])
+>>>>);
+>>>>console.log(discountedPrices);
+>>>>// { apple: 0.45, banana: 0.27, orange: 0.54 }
+>>>
+>>>>[!example] Объединение объектов с преобразованием:
+>>>>```js
+>>>>const obj1 = { a: 1, b: 2 };
+>>>>const obj2 = { c: 3, d: 4 };
+>>>>const combined = Object.fromEntries([
+>>>>    ...Object.entries(obj1),
+>>>>    ...Object.entries(obj2).map(([key, value]) => [key.toUpperCase(), value * 2])
+>>>>]);
+>>>>console.log(combined);
+>>>>// { a: 1, b: 2, C: 6, D: 8 }
+>>>
+>>>>[!example] Создание объекта из URLSearchParams:
+>>>>```js
+>>>>const searchParams = new URLSearchParams('key1=value1&key2=value2');
+>>>>const obj = Object.fromEntries(searchParams);
+>>>>console.log(obj);
+>>>>// { key1: 'value1', key2: 'value2' }
+>>>
+>>>>[!example] Инвертирование объекта (обмен ключей и значений):
+>>>>```js
+>>>>const original = { a: 1, b: 2, c: 3 };
+>>>>const inverted = Object.fromEntries(
+>>>>    Object.entries(original).map(([key, value]) => [value, key])
+>>>>);
+>>>>console.log(inverted);
+>>>>// { '1': 'a', '2': 'b', '3': 'c' }
+>>>
+>>>>[!example] Создание объекта с вычисляемыми свойствами:
+>>>>```js
+>>>>const keys = ['name', 'age', 'city'];
+>>>>const values = ['Eve', 28, 'Paris'];
+>>>>const obj = Object.fromEntries(keys.map((key, index) => [key, values[index]]));
+>>>>console.log(obj);
+>>>>// { name: 'Eve', age: 28, city: 'Paris' }
+>>>>```
+>
+>>[!info]- **Object.keys()**
+>>Возвращает массив строковых элементов, соответствующих именам перечисляемых свойств
+>>```js
+>>const object1 = { a: 'somestring', b: 42, c: false };
+>>console.log(Object.keys(object1)); // ["a", "b", "c"]
+>>```
+>
+>>[!info]- **Object.values()**
+>>Возвращает массив значений перечисляемых свойств объекта
+>>```js
+>>const object1 = { a: 'somestring', b: 42, c: false };
+>>console.log(Object.values(object1)); // ["somestring", 42, false]
+>>```
+>
+>>[!info]- **Object.freeze()**
+>>Замораживает объект: другой код не сможет удалить или изменить его свойства
+>>```js
+>>const obj = { prop: 42 };
+>>Object.freeze(obj);
+>>obj.prop = 33; // Throws an error in strict mode
+>>console.log(obj.prop); // 42
+>>```
+>
+>>[!info]- **Object.getOwnPropertyDescriptor()**
+>>Возвращает дескриптор свойства для собственного свойства объекта
+>>```js
+>>const object1 = { property1: 42 };
+>>const descriptor1 = Object.getOwnPropertyDescriptor(object1, 'property1');
+>>console.log(descriptor1.configurable); // true
+>>console.log(descriptor1.value); // 42
+>>```
+>
+>>[!info]- **Object.getOwnPropertyDescriptors()**
+>>Возвращает все собственные дескрипторы свойств данного объекта
+>>```js
+>>const object1 = { property1: 42 };
+>>const descriptors1 = Object.getOwnPropertyDescriptors(object1);
+>>console.log(descriptors1.property1.writable); // true
+>>console.log(descriptors1.property1.value); // 42
+>>```
+>
+>>[!info]- **Object.getOwnPropertyNames()**
+>>Возвращает массив со всеми свойствами (независимо от того, перечисляемые они или нет)
+>>```js
+>>const object1 = { a: 1, b: 2, c: 3 };
+>>console.log(Object.getOwnPropertyNames(object1)); // ["a", "b", "c"]
+>>```
+>
+>>[!info]- **Object.getOwnPropertySymbols()**
+>>Возвращает массив всех символьных свойств, найденных непосредственно на объекте
+>>```js
+>>const obj = {};
+>>const a = Symbol('a');
+>>const b = Symbol.for('b');
+>>obj[a] = 'localSymbol';
+>>obj[b] = 'globalSymbol';
+>>const objectSymbols = Object.getOwnPropertySymbols(obj);
+>>console.log(objectSymbols.length); // 2
+>>```
+>
+>>[!info]- **Object.getPrototypeOf()**
+>>Возвращает прототип указанного объекта
+>>```js
+>>const prototype1 = {};
+>>const object1 = Object.create(prototype1);
+>>console.log(Object.getPrototypeOf(object1) === prototype1); // true
+>>```
+>
+>>[!info]- **Object.is()**
+>>Определяет, являются ли два значения одним и тем же значением
+>>```js
+>>console.log(Object.is('foo', 'foo')); // true
+>>console.log(Object.is(window, window)); // true
+>>console.log(Object.is('foo', 'bar')); // false
+>>console.log(Object.is([], [])); // false
+>>```
+>
+>>[!info]- **Object.isExtensible()**
+>>Определяет, является ли объект расширяемым
+>>```js
+>>const object1 = {};
+>>console.log(Object.isExtensible(object1)); // true
+>>Object.preventExtensions(object1);
+>>console.log(Object.isExtensible(object1)); // false
+>>```
+>
+>>[!info]- **Object.isFrozen()**
+>>Определяет, был ли объект заморожен
+>>```js
+>>const object1 = { property1: 42 };
+>>console.log(Object.isFrozen(object1)); // false
+>>Object.freeze(object1);
+>>console.log(Object.isFrozen(object1)); // true
+>>```
+>
+>>[!info]- **Object.isSealed()**
+>>Определяет, является ли объект запечатанным
+>>```js
+>>const object1 = { property1: 42 };
+>>console.log(Object.isSealed(object1)); // false
+>>Object.seal(object1);
+>>console.log(Object.isSealed(object1)); // true
+>>```
+>
+>>[!info]- **Object.preventExtensions()**
+>>Предотвращает добавление новых свойств к объекту
+>>```js
+>>const object1 = {};
+>>Object.preventExtensions(object1);
+>>try {
+>>    Object.defineProperty(object1, 'property1', { value: 42 });
+>>} catch (e) {
+>>    console.log(e); // TypeError: Cannot define property property1, object is not extensible
+>>}
+>>```
+>
+>>[!info]- **Object.seal()**
+>>Запечатывает объект, предотвращая добавление новых свойств и делая все существующие свойства неконфигурируемыми
+>>```js
+>>const object1 = { property1: 42 };
+>>Object.seal(object1);
+>>object1.property1 = 33;
+>>console.log(object1.property1); // 33
+>>delete object1.property1; // cannot delete when sealed
+>>console.log(object1.property1); // 33
+>>```
+>
+>>[!info]- **Object.setPrototypeOf()**
+>>Устанавливает прототип (т.е., внутреннее свойство [[Prototype]]) указанного объекта в другой объект или null
+>>```js
+>>const obj = { a: 1 };
+>>const parent = { b: 2 };
+>>Object.setPrototypeOf(obj, parent);
+>>console.log(obj.b); // 2
+>>```
+>
+>>[!info]- **Object.defineProperty()**
+>>Определяет новое или изменяет существующее свойство непосредственно на объекте
+>>```js
+>>const object1 = {};
+>>Object.defineProperty(object1, 'property1', {
+>>    value: 42,
+>>    writable: false
+>>});
+>>object1.property1 = 77; // throws an error in strict mode
+>>console.log(object1.property1); // 42
+>>```
+>
+>>[!info]- **Object.defineProperties()**
+>>Определяет новые или изменяет существующие свойства непосредственно на объекте, возвращая этот объект
+>>```js
+>>const object1 = {};
+>>Object.defineProperties(object1, {
+>>    property1: { value: 42, writable: true },
+>>    property2: {}
+>>});
+>>console.log(object1.property1); // 42
+>>```
+
 
 
 # event-loop
