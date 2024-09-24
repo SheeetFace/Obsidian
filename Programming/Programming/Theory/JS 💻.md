@@ -2464,6 +2464,230 @@
 >>console.log(object1.property1); // 42
 >>```
 
+# операторы-объектов
+>[!help] **Операторы и ключевые слова для работы с объектами**
+>>[!info] `delete` - удаляет свойство из объекта
+>>```js
+>>const person = { name: 'Alice', age: 30, job: 'developer' };
+>>console.log(person); // { name: 'Alice', age: 30, job: 'developer' }
+>>
+>>delete person.age;
+>>console.log(person); // { name: 'Alice', job: 'developer' }
+>>
+>>// Попытка удалить несуществующее свойство
+>>console.log(delete person.salary); // true (но ничего не меняется)
+>>
+>>// Удаление с использованием квадратных скобок
+>>delete person['job'];
+>>console.log(person); // { name: 'Alice' }
+>>```
+>
+>>[!info] `in` - проверяет наличие свойства в объекте (включая прототип)
+>>```js
+>>const car = { make: 'Toyota', model: 'Corolla' };
+>>console.log('make' in car); // true
+>>console.log('year' in car); // false
+>>
+>>// Проверка свойства из прототипа
+>>console.log('toString' in car); // true
+>>
+>>// Использование с переменной
+>>const prop = 'model';
+>>console.log(prop in car); // true
+>>```
+>
+>>[!info] `instanceof` - проверяет, принадлежит ли объект к определенному классу
+>>```js
+>>class Animal {}
+>>class Dog extends Animal {}
+>>
+>>const myDog = new Dog();
+>>console.log(myDog instanceof Dog); // true
+>>console.log(myDog instanceof Animal); // true
+>>console.log(myDog instanceof Object); // true
+>>
+>>const arr = [1, 2, 3];
+>>console.log(arr instanceof Array); // true
+>>console.log(arr instanceof Object); // true
+>>```
+>
+>>[!info] `new` - создает экземпляр объекта
+>>```js
+>>function Person(name) {
+>>    this.name = name;
+>>}
+>>
+>>const alice = new Person('Alice');
+>>console.log(alice.name); // 'Alice'
+>>
+>>// Использование с встроенными объектами
+>>const currentDate = new Date();
+>>console.log(currentDate);
+>>
+>>const regex = new RegExp('\\d+');
+>>console.log(regex.test('123')); // true
+>>```
+>
+>>[!info] `this` - ссылается на текущий контекст выполнения
+>>```js
+>>const person = {
+>>    name: 'Bob',
+>>    greet: function() {
+>>        console.log(`Hello, my name is ${this.name}`);
+>>    },
+>>    friends: ['Alice', 'Charlie'],
+>>    introduceFriends: function() {
+>>        this.friends.forEach(function(friend) {
+>>            console.log(`${this.name}'s friend: ${friend}`);
+>>        }.bind(this));
+>>    }
+>>};
+>>
+>>person.greet(); // "Hello, my name is Bob"
+>>person.introduceFriends();
+>>// "Bob's friend: Alice"
+>>// "Bob's friend: Charlie"
+>>```
+>
+>>[!info] `void` - вычисляет выражение и возвращает undefined
+>>```js
+>>console.log(void 0); // undefined
+>>
+>>// Использование в ссылках
+>>const link = document.createElement('a');
+>>link.href = 'javascript:void(0)';
+>>link.onclick = function() { console.log('Clicked!'); return false; };
+>>
+>>// Немедленное выполнение функции без сохранения результата
+>>void function() {
+>>    console.log('This function is executed immediately');
+>>}();
+>>```
 
-
+# Map Set WeakMap WeakSet
+>[!help]
+>Эти структуры данных предоставляют эффективные способы хранения и управления коллекциями данных в JS. 
+>   - `Map` используется для хранения пар ключ-значение.
+>   - `Set` для хранения уникальных значений. 
+>   - `WeakMap` и `WeakSet` предоставляют специальные версии с `weak references`, что полезно для определенных сценариев управления памятью.
+>>   ###### Преимущества перед обычными `Map` и `Set`:
+>>    1.  ***Автоматическая очистка памяти***: объекты-ключи могут быть собраны сборщиком мусора, если на них нет других ссылок.
+>>    2.  ***Отсутствие влияния на управление памятью***: использование `WeakMap/WeakSet` не препятствует сборке мусора объектов-ключей.
+>>    3.  ***Безопасность***: невозможно получить список всех ключей/значений, что полезно для приватных данных.
+>
+>>[!example]- **Map**
+>>Коллекция пар ключ-значение, где ключи могут быть любого типа
+>> ###### Методы `Map`
+>>>  - `map.set()`   - Добавление элементов
+>>>  - `map.get()`   - Получение значений
+>>>  - `map.size`    - Получение размера `Map`
+>>>  - `map.has()`   - Проверка наличия ключа
+>>>  - `map.delete()`- Удаление элемента
+>>>  - `map.clear()` - Очистка `Map`
+>>```js
+>>const map = new Map();
+>>
+>>// Добавление элементов
+>>map.set('name', 'Alice');
+>>map.set(42, 'answer');
+>>map.set({}, 'object');
+>>
+>>// Получение значений
+>>console.log(map.get('name')); // 'Alice'
+>>console.log(map.size); // 3
+>>
+>>// Проверка наличия ключа
+>>console.log(map.has(42)); // true
+>>
+>>// Удаление элемента
+>>map.delete(42);
+>>
+>>// Перебор элементов
+>>for (let [key, value] of map) {
+>>    console.log(`${key} = ${value}`);
+>>}
+>>
+>>// Очистка Map
+>>map.clear();
+>>```
+>
+>>[!example]- **Set**
+>>Коллекция уникальных значений любого типа
+>> ###### Методы `Set`
+>>>  - `set.add()`   - Добавление элементов
+>>>  - `set.size`  - Получение размера `Map`
+>>>  - `set.has()`   - Проверка наличия ключа
+>>>  - `set.delete()`- Удаление элемента
+>>>  - `set.clear()` - Очистка `Map`
+>>>
+>>>В `Set` нет необходимости в методе `get()`, потому что `Set` хранит только уникальные значения, а не пары ключ-значение. Если вам нужно "получить" значение из `Set`, вы просто проверяете его наличие с помощью метода `has()`.
+>>```js
+>>const set = new Set();
+>>
+>>// Добавление элементов
+>>set.add(1);
+>>set.add('two');
+>>set.add({three: 3});
+>>
+>>// Попытка добавить дубликат
+>>set.add(1);
+>>
+>>console.log(set.size); // 3
+>>
+>>// Проверка наличия элемента
+>>console.log(set.has('two')); // true
+>>
+>>// Удаление элемента
+>>set.delete('two');
+>>
+>>// Перебор элементов
+>>for (let item of set) {
+>>    console.log(item);
+>>}
+>>
+>>// Преобразование Set в массив
+>>const array = [...set];
+>>
+>>// Очистка Set
+>>set.clear();
+>>```
+>
+>>[!example]- **WeakMap и WeakSet**
+>>Специальные версии `Map` и `Set` с "слабыми" ссылками на объекты
+>> При переприсванивание `WeakMap` и `WeakSet` на `null` то они теперь будут доступены для сборки мусора.
+>>
+>> ###### `WeakMap` и `WeakSet` имеют меньше методов, чем их "сильные" аналоги: 
+>>> ***WeakMap***:
+>>> - `set(key, value)`
+>>> - `get(key)`
+>>> - `has(key)`
+>>> - `delete(key)`
+>>>
+>>> ***WeakSet***:
+>>> - `add(value)`
+>>> - `has(value)`
+>>> - `delete(value)`
+>>>
+>>> ***Важные отличия***:
+>>> - У них нет методов `clear()` и свойства `size`.
+>>> - Они не являются перебираемыми (нет методов `keys()`, `values()`, `entries()`, `forEach()`).
+>>```js
+>>// WeakMap
+>>const weakMap = new WeakMap();
+>>let obj = {};
+>>
+>>weakMap.set(obj, 'associated data');
+>>console.log(weakMap.get(obj)); // 'associated data'
+>>
+>>obj = null; // obj теперь доступен для сборки мусора
+>>
+>>// WeakSet
+>>const weakSet = new WeakSet();
+>>let obj2 = {};
+>>
+>>weakSet.add(obj2);
+>>console.log(weakSet.has(obj2)); // true
+>>
+>>obj2 = null; // obj2 теперь доступен для сборки мусора
+>>```
 # event-loop
