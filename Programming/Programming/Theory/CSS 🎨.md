@@ -10,6 +10,59 @@
 > 
 > ![[Pasted image 20241218155951.png]]
 
+# normalize-и-reset
+> [!help] 
+> Стили **normalize** и **reset** — это два различных подхода к инициализации стилей браузера, которые помогают обеспечить кросс-браузерную совместимость и предсказуемое поведение CSS.
+>
+> > [!quote] **Reset CSS**
+>**Reset CSS** - стремится устранить все браузерные стили по умолчанию, обнуляя или устанавливая все основные стили (отступы, поля, шрифты и т.д.) до начальных значений. Это позволяет начать с чистого листа и явно задавать стили для каждого элемента.
+>
+>> [!example] **Reset CSS**
+>>```css
+>>/* Простой пример Reset CSS */
+>>html, body, div, span, applet, object, iframe,
+>>h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+>>a, abbr, acronym, address, big, cite, code,
+>>del, dfn, em, img, ins, kbd, q, s, samp,
+>>small, strike, strong, sub, sup, tt, var,
+>>b, u, i, center,
+>>dl, dt, dd, ol, ul, li,
+>>fieldset, form, label, legend,
+>>table, caption, tbody, tfoot, thead, tr, th, td,
+>>article, aside, canvas, details, embed, 
+>>figure, figcaption, footer, header, hgroup, 
+>>menu, nav, output, ruby, section, summary,
+>>time, mark, audio, video {
+>>  margin: 0;
+>>  padding: 0;
+>>  border: 0;
+>>  font-size: 100%;
+>>  font: inherit;
+>>  vertical-align: baseline;
+>>}
+>
+> > [!quote] **Normalize CSS**
+>> **Normalize CSS** - действует немного по-другому: он не обнуляет все стили по умолчанию, а вместо этого старается сделать стили по умолчанию более согласованными и предсказуемыми. Normalize сохраняет полезные браузерные стили по умолчанию и делает их более последовательными между браузерами.
+>
+>> [!example] **Normalize CSS**
+>>```css
+>>/* Простой пример Normalize CSS */
+>>html {
+>>  line-height: 1.15; /* 1 */
+>>  -webkit-text-size-adjust: 100%; /* 2 */
+>>}
+>>
+>>body {
+>>  margin: 0;
+>>}
+>>
+>>/* Заголовки */
+>>h1 {
+>>  font-size: 2em;
+>>  margin: 0.67em 0;
+>>}
+
+
 # типы-позиционирования
 > [!help] 
 > 
@@ -27,6 +80,28 @@
 > 
 > ![[Pasted image 20240906111256.png]]
  
+# BEM-(Block-Element-Modifier)
+> [!help] 
+> **BEM (Block, Element, Modifier)** — это методология ***именования*** классов в CSS, которая помогает организовать и масштабировать код, делая его более понятным и поддерживаемым.
+>
+>> **Основные концепции BEM**:
+>> - ***Block (Блок)***:
+>>  Независимая сущность, которая может быть использована повторно. Например, `header`, `container`, `menu`.
+>>
+>> - ***Element (Элемент)***:
+>>Часть блока, которая выполняет определённую функцию. Элементы не могут существовать отдельно от блока. Например, `menu__item`, `header__logo`.
+>>
+>> - ***Modifier (Модификатор)***:
+>>Определяет вид или состояние блока или элемента. Модификаторы могут изменять внешний вид, поведение или состояние. Например, `button--primary`, `menu__item--active`.
+>
+>>[!example]
+>>```html
+>><div class="menu">
+>>  <div class="menu__item menu__item--active">Главная</div>
+>>  <div class="menu__item">О нас</div>
+>>  <div class="menu__item">Контакты</div>
+>></div>
+
 # центрирование-блока
 > [!help] 
 >  Существует несколько способов центрирования блоков в CSS, и их количество зависит от контекста и требований. Вот основные методы:

@@ -660,6 +660,42 @@
 >>>console.log(dog.bark());   // "Woof!" - метод dog
 >>>console.log(dog.speak());  // "Animal sound" - метод наследован от animal
 >>
+>>>[!example] Реализация кастомного метода `flat` с индексом
+>>>```javascript
+>>>const arr = [1,2,3,4,5]
+>>>
+>>>Array.prototype.myFlat = function(index){
+>>>  const res = []
+>>>  
+>>>  const newFlat= this.flat(Infinity)
+>>>  
+>>>  newFlat.forEach((item,i)=>{
+>>>    if(i===index) res.push([item])
+>>>    else res.push(item)
+>>>  })
+>>>  
+>>>  return res 
+>>>}
+>>>
+>>>console.log(arr.myFlat(3)) //[ 1, 2, 3, [ 4 ], 5 ]
+>>
+>>>[!example] Реализация кастомного метода `filter`
+>>>```javascript
+>>>const arr = [1,2,3,4,5]
+>>>
+>>>Array.prototype.myFilter = function(func){ // func - это callback
+>>>  const res = []
+>>>  
+>>>  this.forEach((item)=>{
+>>>    if(func(item)) res.push(item)
+>>>  })
+>>>  return res
+>>>}
+>>>
+>>>console.log(arr.myFilter(item=> item % 2)) //[ 1, 3, 5 ]
+>>>console.log(arr.filter((item)=>item % 2)) //[ 1, 3, 5 ]
+>>
+
 > ###### Методы для работы с прототипами
 >> 1. **Object.setPrototypeOf()** - используется для назначения прототипа для объекта. Это современный и предпочтительный метод по сравнению с устаревшим `__proto__`.
 >>>```javascript
@@ -1105,6 +1141,29 @@
 >>
 >>В общем случае, если вы хотите создать универсальный декоратор, который может работать с любыми функциями, используйте `...args`. Если декоратор предназначен для функций с определенным количеством аргументов, можно использовать конкретные параметры.
 >
+
+
+# композиция-функций-(compose)
+> [!help] 
+>>[!quote]
+> **Композиция функций** позволяет объединять две (или более) функции в одну новую функцию. Используется для упрощения цепочек вызовов и создания новых функций из существующих.
+>>
+> Схоже на [декоратор](#декораторы), но не добавляют какую-либо функциональность как это делает [декоратор](#декораторы).
+>
+>>[!example]
+>> ```js
+>> const add = x => x + 1;
+>>const double = x => x * 2;
+>>
+>>const compose = (f, g) => (x) => f(g(x));
+>>
+>>const composedFunction = compose(add, double);
+>>console.log(composedFunction(3)); // 7 (сначала double(3) = 6, затем add(6) = 7)
+>>```
+>>
+>>  ** Основная идея** - `compose(f, g)` возвращает функцию, которая сначала вызывает `g(x)`, а потом передает результат в `f`.
+
+
 
 # функции-высшего-порядка
 > [!help] 

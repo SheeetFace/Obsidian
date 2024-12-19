@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 213.5,
-    "collapsed": true
+    "width": 213.5
   },
   "right": {
     "id": "8143886fb8b79a03",
@@ -177,15 +176,15 @@
   },
   "active": "2bfd9b5b14e5967b",
   "lastOpenFiles": [
+    "Programming/Theory/JS 💻.md",
+    "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/links/web/IP.md",
     "Programming/Theory/links/web/SSL TSL.md",
     "Programming/Theory/links/web/TCP.md",
     "Programming/Theory/links/web/DNS.md",
     "Programming/Theory/links/Pasted image 20241218155951.png",
-    "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/HTML📄.md",
     "Programming/Theory/ООП.md",
-    "Programming/Theory/JS 💻.md",
     "Programming/Theory/WEB🌐.md",
     "Programming/Theory/links/Pasted image 20240913123330.png",
     "Pasted image 20240913122332.png",
