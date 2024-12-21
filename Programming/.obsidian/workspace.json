@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/CSS 🎨.md",
+                "file": "Programming/Theory/JS 💻.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CSS 🎨"
+              "title": "JS 💻"
             }
           }
         ]
@@ -176,8 +176,8 @@
   },
   "active": "2bfd9b5b14e5967b",
   "lastOpenFiles": [
-    "Programming/Theory/JS 💻.md",
     "Programming/Theory/CSS 🎨.md",
+    "Programming/Theory/JS 💻.md",
     "Programming/Theory/links/web/IP.md",
     "Programming/Theory/links/web/SSL TSL.md",
     "Programming/Theory/links/web/TCP.md",

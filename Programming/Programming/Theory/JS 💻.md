@@ -1160,6 +1160,21 @@
 >>const composedFunction = compose(add, double);
 >>console.log(composedFunction(3)); // 7 (сначала double(3) = 6, затем add(6) = 7)
 >>```
+>
+>>[!example]
+>> ```js
+>> const x = (x) => x * 2
+>> const y = (x) => x * 2
+>> const z = (x) => x * 2
+>> 
+>> const compose =(x,y,z)=>{
+>>   return function(num){
+>>     return x(y(z(num)))
+ >>  }
+>> }
+>> 
+>> console.log(compose(x,y,z)(2)) //16
+>>```
 >>
 >>  ** Основная идея** - `compose(f, g)` возвращает функцию, которая сначала вызывает `g(x)`, а потом передает результат в `f`.
 
@@ -2858,3 +2873,5 @@
 
 
 # event-loop
+
+# for-in/for-of
