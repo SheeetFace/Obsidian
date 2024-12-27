@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/CSS 🎨.md",
+                "file": "Programming/Theory/JS 💻.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CSS 🎨"
+              "title": "JS 💻"
             }
           }
         ]
@@ -176,16 +176,21 @@
   },
   "active": "2bfd9b5b14e5967b",
   "lastOpenFiles": [
+    "Programming/Theory/REACT ⚛.md",
     "Programming/Theory/HTML📄.md",
+    "Programming/Theory/REACT.md",
     "Programming/Theory/JS 💻.md",
-    "Programming/Theory/CSS 🎨.md",
-    "Programming/Theory/links/web/IP.md",
-    "Programming/Theory/links/web/SSL TSL.md",
-    "Programming/Theory/links/web/TCP.md",
-    "Programming/Theory/links/web/DNS.md",
-    "Programming/Theory/links/Pasted image 20241218155951.png",
-    "Programming/Theory/ООП.md",
     "Programming/Theory/WEB🌐.md",
+    "Programming/Theory/CSS 🎨.md",
+    "Programming/Theory/links/web/DNS.md",
+    "Programming/Theory/links/web/TCP.md",
+    "Programming/Theory/links/web/SSL TSL.md",
+    "Programming/Theory/links/web/IP.md",
+    "Programming/Theory/links/Pasted image 20240902114330.png",
+    "Programming/Theory/links/CSS Object Model (CSSOM).md",
+    "Programming/Theory/links/1637610523913.png",
+    "Programming/Theory/ООП.md",
+    "Programming/Theory/links/Pasted image 20241218155951.png",
     "Programming/Theory/links/Pasted image 20240913123330.png",
     "Pasted image 20240913122332.png",
     "Pasted image 20240913122116.png",
@@ -201,10 +206,7 @@
     "Programming/AsForJs",
     "08.07._IPTC Метатетеги.docx",
     "Programming/Theory/links/Pasted image 20240906111256.png",
-    "Programming/Theory/links/1637610523913.png",
     "Programming/Theory/links/Pasted image 20240902120745.png",
-    "Programming/Theory/links/Pasted image 20240902114330.png",
-    "Programming/Theory/links/CSS Object Model (CSSOM).md",
     "Programming/Theory/CSSOM.md",
     "SSL",
     "Programming/Theory/[.md",

@@ -70,5 +70,9 @@
     "iconName": "LiFolder",
     "iconColor": "#a2a503"
   },
-  "Programming/AsForJs/SEO": "LiFolder"
+  "Programming/AsForJs/SEO": "LiFolder",
+  "Programming/Theory/REACT ⚛.md": {
+    "iconName": "LiText",
+    "iconColor": "#27aab4"
+  }
 }

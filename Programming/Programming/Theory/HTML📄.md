@@ -183,3 +183,47 @@
 >>
 >>>[!info]
 >>> **В React есть onClickCapture**
+
+# portals
+> [!help] 
+>> [!quote]
+>> **HTML Порталы (Portal Element)** - HTML элемент `<portal>`, позволяющий предварительно отображать контент другой страницы в текущем документе
+>>
+>> **Базовое использование** - Создание портала на другую страницу
+>>
+>>```html
+>><portal id="myPortal" src="https://example.com">
+>>    <!-- Fallback контент, если браузер не поддерживает порталы -->
+>>    <p>Ваш браузер не поддерживает порталы</p>
+>></portal>
+>>```
+>>
+>> **Стилизация портала** - Портал можно стилизовать как обычный элемент
+>>
+>>```css
+>>#myPortal {
+>>    width: 500px;
+>>    height: 300px;
+>>    border: none;
+>>    border-radius: 10px;
+>>}
+>>```
+>>
+>> **Активация портала** - JavaScript для перехода по порталу
+>>
+>>```js
+>>const portal = document.querySelector('#myPortal');
+>>
+>>// Активация портала при клике
+>>portal.addEventListener('click', () => {
+>>    portal.activate();
+>>});
+>>```
+>>
+>> **Обработка событий портала**
+>>
+>>```js
+>>portal.addEventListener('portalactivate', () => {
+>>    console.log('Портал активирован');
+>>});
+>>```
