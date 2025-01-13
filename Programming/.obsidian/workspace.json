@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 213.5
+    "width": 213.5,
+    "collapsed": true
   },
   "right": {
     "id": "8143886fb8b79a03",
@@ -176,10 +177,10 @@
   },
   "active": "2bfd9b5b14e5967b",
   "lastOpenFiles": [
+    "Programming/Theory/WEB🌐.md",
+    "Programming/Theory/JS 💻.md",
     "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/HTML📄.md",
-    "Programming/Theory/JS 💻.md",
-    "Programming/Theory/WEB🌐.md",
     "Programming/Theory/REACT ⚛.md",
     "Programming/Theory/REACT.md",
     "Programming/Theory/links/web/DNS.md",
