@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e879ccfda1d55982",
+        "id": "052bf96fbfd7a3c9",
         "type": "tabs",
         "children": [
           {
-            "id": "2bfd9b5b14e5967b",
+            "id": "ca0420c5b9202a5c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -175,10 +175,17 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "2bfd9b5b14e5967b",
+  "active": "ca0420c5b9202a5c",
   "lastOpenFiles": [
-    "Programming/Theory/WEB🌐.md",
+    "Pasted image 20250115155015.png",
     "Programming/Theory/JS 💻.md",
+    "Pasted image 20250115155226.png",
+    "Pasted image 20250115135848.png",
+    "Programming/Theory/image.png",
+    "Pasted image 20250115135818.png",
+    "Pasted image 20250115135657.png",
+    "Pasted image 20250115135518.png",
+    "Programming/Theory/WEB🌐.md",
     "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/HTML📄.md",
     "Programming/Theory/REACT ⚛.md",
@@ -192,11 +199,6 @@
     "Programming/Theory/links/1637610523913.png",
     "Programming/Theory/ООП.md",
     "Programming/Theory/links/Pasted image 20241218155951.png",
-    "Programming/Theory/links/Pasted image 20240913123330.png",
-    "Pasted image 20240913122332.png",
-    "Pasted image 20240913122116.png",
-    "Pasted image 20240913121835.png",
-    "Pasted image 20240913121151.png",
     "SEO asForJs/Untitled.md",
     "Programming/AsForJs/SEO",
     "Programming/AsForJs/SEO/4. Клиентский кэш___⎡~hubs ~work ~paradise ~audit⎦.md",
@@ -206,8 +208,6 @@
     "Programming/AsForJs/SEO/08.07._IPTC Метатетеги.md",
     "Programming/AsForJs",
     "08.07._IPTC Метатетеги.docx",
-    "Programming/Theory/links/Pasted image 20240906111256.png",
-    "Programming/Theory/links/Pasted image 20240902120745.png",
     "Programming/Theory/CSSOM.md",
     "SSL",
     "Programming/Theory/[.md",
