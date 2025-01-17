@@ -2562,6 +2562,47 @@
 >>console.log(obj.a); // 2 (свойство объекта изменено)
 >>```
 
+# клонирование-объектов
+>[!help] 
+>>[!quote]
+>>Способы делятся на два типа клонирования:
+>> 1. **Поверхностное `(Shallow Clone)`** 
+>>      - Поверхностное клонирование создает новый объект, но копирует только ссылки на вложенные объекты. Это значит, что изменения в вложенных объектах будут отражаться и в оригинале, и в клоне.
+>> 2. **Глубокое `(Deep Clone)`**
+>>      - Глубокое клонирование создает полностью независимую копию объекта, включая все вложенные объекты.
+>
+>>[!example] Поверхностное клонирование (Shallow Clone)
+>>Создает новый объект, копируя только ссылки на вложенные объекты
+>>```js
+>>// Spread оператор
+>>const original = { a: 1, b: { c: 2 } };
+>>const shallowClone1 = { ...original };
+>>
+>>// Object.assign()
+>>const shallowClone2 = Object.assign({}, original);
+>>
+>>// Метод slice() для массивов
+>>const originalArray = [1, 2, 3];
+>>const shallowCloneArray = originalArray.slice();
+>>```
+>
+>>[!example] Глубокое клонирование (Deep Clone)
+>>Создает полностью независимую копию объекта, включая все вложенные объекты
+>>```js
+>>// JSON.parse() и JSON.stringify()
+>>const deepClone1 = JSON.parse(JSON.stringify(original));
+>>
+>>// structuredClone() (современный метод)
+>>const deepClone2 = structuredClone(original);
+>>```
+>
+>>[!info] **Особенности и ограничения**
+>>- `JSON.parse(JSON.stringify())`: не работает с функциями, `undefined`, `Symbol`, `BigInt` теряет специальные типы данных
+>>- `structuredClone()`: не поддерживает клонирование функций и прототипов объектов
+>>- Производительность: для небольших объектов `JSON` метод может быть эффективен, для больших - лучше использовать специализированные библиотеки
+>>- Библиотеки: ***lodash*** `_.cloneDeep()`, ***Ramda*** `R.clone()`
+>>- Особые случаи: `DOM-узлы` и экземпляры классов могут требовать специфической логики клонирования
+
 # статические-методы-обьектов
 >[!help]
 >>[!info]- **Object.assign()**
@@ -3182,46 +3223,183 @@
 >>obj2 = null; // obj2 теперь доступен для сборки мусора
 >>```
 
-# клонирование-объектов
+# for-in/for-of/for-await...of
+
+# Promise
 >[!help] 
 >>[!quote]
->>Способы делятся на два типа клонирования:
->> 1. **Поверхностное `(Shallow Clone)`** 
->>      - Поверхностное клонирование создает новый объект, но копирует только ссылки на вложенные объекты. Это значит, что изменения в вложенных объектах будут отражаться и в оригинале, и в клоне.
->> 2. **Глубокое `(Deep Clone)`**
->>      - Глубокое клонирование создает полностью независимую копию объекта, включая все вложенные объекты.
+>> **Promise** - это объект, который представляет асинхронную операцию.
 >
->>[!example] Поверхностное клонирование (Shallow Clone)
->>Создает новый объект, копируя только ссылки на вложенные объекты
+>>[!quote] **Состояния промиса**:
+>> - ***pending*** (ожидание) - начальное состояние
+>> - ***fulfilled*** (выполнено) - операция завершилась успешно
+>> - ***rejected*** (отклонено) - операция завершилась с ошибкой
+>
+>>[!example] Синтаксис создания:
 >>```js
->>// Spread оператор
->>const original = { a: 1, b: { c: 2 } };
->>const shallowClone1 = { ...original };
->>
->>// Object.assign()
->>const shallowClone2 = Object.assign({}, original);
->>
->>// Метод slice() для массивов
->>const originalArray = [1, 2, 3];
->>const shallowCloneArray = originalArray.slice();
+>>const promise = new Promise((resolve, reject) => {
+>>    // выполнение какой-то асинхронной операции
+>>    if (/* операция успешна */) {
+>>        resolve(value);
+>>    } else {
+>>       reject(error);
+>>    }
+>>});
 >>```
 >
->>[!example] Глубокое клонирование (Deep Clone)
->>Создает полностью независимую копию объекта, включая все вложенные объекты
->>```js
->>// JSON.parse() и JSON.stringify()
->>const deepClone1 = JSON.parse(JSON.stringify(original));
->>
->>// structuredClone() (современный метод)
->>const deepClone2 = structuredClone(original);
->>```
+>>[!quote] **Методы промиса:**
+>> - `then()`- обработка успешного результата
+>> - `catch()` - обработка ошибки
+>> - `finally()` - выполняется всегда, независимо от результата
 >
->>[!info] **Особенности и ограничения**
->>- `JSON.parse(JSON.stringify())`: не работает с функциями, `undefined`, `Symbol`, `BigInt` теряет специальные типы данных
->>- `structuredClone()`: не поддерживает клонирование функций и прототипов объектов
->>- Производительность: для небольших объектов `JSON` метод может быть эффективен, для больших - лучше использовать специализированные библиотеки
->>- Библиотеки: ***lodash*** `_.cloneDeep()`, ***Ramda*** `R.clone()`
->>- Особые случаи: `DOM-узлы` и экземпляры классов могут требовать специфической логики клонирования
+> ###### Статические методы Promise:
+>>[!quote]
+>>  - `Promise.all()` - ждет выполнения всех промисов
+>>>   ```js
+>>>  // Ждет выполнения всех промисов
+>>>  const promises = [promise1, promise2, promise3];
+>>>  Promise.all(promises)
+>>>      .then(results => console.log(results)) // массив результатов
+>>>      .catch(error => console.log(error)); // если хоть один промис отклонен
+>>>  ```
+>>  - `Promise.race()` - ждет первый выполненный промис
+>>>   ```js
+>>>// Возвращает первый завершенный промис (успех или ошибка)
+>>>Promise.race([promise1, promise2])
+>>>    .then(result => console.log(result))
+>>>    .catch(error => console.log(error));
+>>>  ```
+>>  - `Promise.allSettled()` - ждет завершения всех промисов (успех или ошибка)
+>>      возвращает обьект `{}`
+>>>   ```js
+>>>Promise.allSettled([promise1, promise2])
+>>>    .then(results => {
+>>>        results.forEach(result => {
+>>>            if (result.status === 'fulfilled') {
+>>>                console.log('Успех:', result.value);
+>>>            } else {
+ >>>               console.log('Ошибка:', result.reason);
+>>>            }
+>>>        });
+>>>    });
+>>>  ```
+>>  - `Promise.any()` - ждет первый успешно выполненный промис
+>>>   ```js
+>>>Promise.any([promise1, promise2])
+>>>    .then(result => console.log(result))
+>>>    .catch(error => console.log(error));
+>>>  ```
+> ###### Promis под капотом
+>>Когда создается **Promise**, внутри него создается структура обьекта, которая хранит:
+>> 1. Состояние (state):
+>>      - ***pending*** (ожидание) - начальное состояние
+>>      - ***fulfilled*** (выполнено успешно)
+>>      - ***rejected*** (выполнено с ошибкой)
+>> 2. Значение (value):
+>>      - ***undefined*** (изначально)
+>>      - ***результат успешного выполнения***
+>>      - ***причина ошибки***
+>> 3. Очереди обработчиков:
+>>      - ***onFulfilled[]*** - массив функций для `.then()`
+>>      - ***onRejected[]*** - массив функций для `.catch()`
+>>
+>>> [!example]- Вот упрощенная реализация Promise, чтобы понять как это работает внутри:
+>>```js
+>>class MyPromise {
+>>  constructor(executor) {
+>>    this.state = 'pending';
+>>    this.value = undefined;
+>>    this.onFulfilledCallbacks = [];
+>>    this.onRejectedCallbacks = [];
+>>
+>>    const resolve = (value) => {
+>>      if (this.state === 'pending') {
+>>       this.state = 'fulfilled';
+>>       this.value = value;
+>>        this.onFulfilledCallbacks.forEach(callback => callback(value));
+>>      }
+>>    };
+>>
+>>   const reject = (reason) => {
+>>      if (this.state === 'pending') {
+>>        this.state = 'rejected';
+>>        this.value = reason;
+>>        this.onRejectedCallbacks.forEach(callback => callback(reason));
+>>      }
+>>    };
+>>
+>>    try {
+>>      executor(resolve, reject);
+>>    } catch (error) {
+>>      reject(error);
+>>    }
+>>  }
+>>
+>>  then(onFulfilled, onRejected) {
+>>    return new MyPromise((resolve, reject) => {
+>>      if (this.state === 'fulfilled') {
+>>       try {
+>>          const result = onFulfilled(this.value);
+>>          resolve(result);
+>>        } catch (error) {
+>>          reject(error);
+>>        }
+>>      } else if (this.state === 'rejected') {
+>>       try {
+>>          const result = onRejected(this.value);
+>>          resolve(result);
+>>        } catch (error) {
+>>          reject(error);
+>>        }
+>>      } else {
+>>        // pending
+>>        this.onFulfilledCallbacks.push((value) => {
+>>          try {
+>>            const result = onFulfilled(value);
+>>            resolve(result);
+>>          } catch (error) {
+>>            reject(error);
+>>          }
+>>       });
+>>
+>>        this.onRejectedCallbacks.push((reason) => {
+>>          try {
+>>           const result = onRejected(reason);
+>>            resolve(result);
+>>          } catch (error) {
+>>            reject(error);
+>>         }
+>>        });
+>>      }
+>>    });
+>>  }
+>>}
+>>```
+>> ###### Когда мы используем Promise:
+>>```js
+>>const promise = new Promise((resolve, reject) => {
+>>  setTimeout(() => {
+>>    resolve('Готово!');
+>>  }, 1000);
+>>});
+>>
+>>promise
+>>  .then(result => console.log(result))
+>>  .catch(error => console.error(error));
+>>```
+>>
+>>**Вот что происходит:**
+>> 1. Создается новый `Promise` с `executor функцией`
+>> 2. В `executor` запускается асинхронная операция
+>> 3. Когда вызывается `resolve()`:
+>>    - состояние меняется на `'fulfilled'`
+>>    - значение сохраняется
+>>    - вызываются все накопленные `onFulfilled callbacks`
+>> 4. Когда мы вызываем `.then()`:
+>>    - Создается новый `Promise`
+>>    - `Callback` сохраняется в очередь `onFulfilledCallbacks`
+>>    - Когда первый `Promise` выполнится, `callback` будет вызван
+>>    - Результат `callback` становится значением нового `Promise`
 
 # event-loop
 >[!help] 
@@ -3286,7 +3464,6 @@
 >![[Pasted image 20250115155226.png]]
 
 
-# for-in/for-of/for-await...of
 
 
 
