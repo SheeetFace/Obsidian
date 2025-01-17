@@ -3289,7 +3289,12 @@
 >>>    .then(result => console.log(result))
 >>>    .catch(error => console.log(error));
 >>>  ```
-> ###### Promis под капотом
+>
+>>[!Warning] Promise и асинхронность от Мурыча
+>>часть 1 - https://www.youtube.com/watch?v=vFSvq_ablAM&list=WL&index=2&t=3s
+>>часть 2 - https://www.youtube.com/watch?v=XUk3zsPRq34
+>
+> ###### Promise под капотом
 >>Когда создается **Promise**, внутри него создается структура обьекта, которая хранит:
 >> 1. Состояние (state):
 >>      - ***pending*** (ожидание) - начальное состояние
