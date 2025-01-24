@@ -861,6 +861,26 @@
 >>
 >>console.log(add1And2(3)); // 6
 >>```
+>
+>>[!example] пример с непонятно сколькими аргументами:
+>>```js
+>>
+>>const sumFn =(a)=>{
+>>  
+>>  if(!a) return 0
+>>  
+>>  return function(b){
+>>    if(b === undefined) return a 
+>>    return sumFn(a+b)
+>>  }
+>>}
+>>
+>>console.log(sumFn()) //0
+>>console.log(sumFn(1)()) //1
+>>console.log(sumFn(1)(4)()) //5
+>>console.log(sumFn(1)(4)(1)()) //6
+>> //! тут важно что в конце у нас () -  вызов
+>>```
 
 # прототипное наследование
 > [!help] 

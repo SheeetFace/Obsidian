@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/REACT ⚛.md",
+                "file": "Programming/Theory/JS 💻.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "REACT ⚛"
+              "title": "JS 💻"
             }
           }
         ]
@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 213.5,
-    "collapsed": true
+    "width": 213.5
   },
   "right": {
     "id": "8143886fb8b79a03",
@@ -177,6 +176,7 @@
   },
   "active": "ca0420c5b9202a5c",
   "lastOpenFiles": [
+    "Programming/Theory/REACT ⚛.md",
     "Programming/Theory/links/web/TCP.md",
     "Programming/Theory/WEB🌐.md",
     "Programming/Theory/JS 💻.md",
@@ -192,7 +192,6 @@
     "Pasted image 20250115135518.png",
     "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/HTML📄.md",
-    "Programming/Theory/REACT ⚛.md",
     "Programming/Theory/REACT.md",
     "Programming/Theory/links/Pasted image 20240902114330.png",
     "Programming/Theory/links/CSS Object Model (CSSOM).md",
