@@ -74,5 +74,6 @@
   "Programming/Theory/REACT ⚛.md": {
     "iconName": "LiText",
     "iconColor": "#27aab4"
-  }
+  },
+  "Programming/Theory/SOLID.md": "LiText"
 }
