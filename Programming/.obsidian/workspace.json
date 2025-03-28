@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/WEB🌐.md",
+                "file": "Programming/Theory/SOLID.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WEB🌐"
+              "title": "SOLID"
+            }
+          },
+          {
+            "id": "1505c499e2f89bda",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Programming/Theory/CSS 🎨.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CSS 🎨"
             }
           },
           {
@@ -78,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -233,15 +247,15 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "4bf0a35a2c1d065e",
+  "active": "1505c499e2f89bda",
   "lastOpenFiles": [
-    "Programming/Theory/ООП.md",
-    "Programming/Theory/SOLID.md",
     "Programming/Theory/JS 💻.md",
     "Programming/Theory/WEB🌐.md",
-    "Programming/Theory/REACT ⚛.md",
+    "Programming/Theory/ООП.md",
+    "Programming/Theory/SOLID.md",
     "Programming/Theory/HTML📄.md",
     "Programming/Theory/CSS 🎨.md",
+    "Programming/Theory/REACT ⚛.md",
     "Programming/Theory/links/web/TCP.md",
     "Programming/Theory/links/Pasted image 20250115155226.png",
     "Programming/Theory/links/Pasted image 20250115135818.png",
