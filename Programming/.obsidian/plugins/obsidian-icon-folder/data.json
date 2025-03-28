@@ -75,5 +75,9 @@
     "iconName": "LiText",
     "iconColor": "#27aab4"
   },
-  "Programming/Theory/SOLID.md": "LiText"
+  "Programming/Theory/SOLID.md": "LiText",
+  "Programming/Theory/TS.md": {
+    "iconName": "LiText",
+    "iconColor": "#2f9198"
+  }
 }
