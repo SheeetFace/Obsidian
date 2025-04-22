@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/TS.md",
+                "file": "Programming/Theory/CSS 🎨.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TS"
+              "title": "CSS 🎨"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 213.5,
-    "collapsed": true
+    "width": 213.5
   },
   "right": {
     "id": "8143886fb8b79a03",
@@ -178,13 +177,13 @@
   },
   "active": "ca0420c5b9202a5c",
   "lastOpenFiles": [
+    "Programming/Theory/JS 💻.md",
     "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/TS.md",
-    "Programming/Theory/SOLID.md",
-    "Programming/Theory/ООП.md",
-    "Programming/Theory/JS 💻.md",
     "Programming/Theory/WEB🌐.md",
     "Programming/Theory/HTML📄.md",
+    "Programming/Theory/ООП.md",
+    "Programming/Theory/SOLID.md",
     "Programming/Theory/REACT ⚛.md",
     "Programming/Theory/links/web/TCP.md",
     "Programming/Theory/links/Pasted image 20250115155226.png",
