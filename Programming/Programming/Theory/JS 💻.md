@@ -829,6 +829,37 @@
 >>console.log(counter.getCount()); // Выведет: 2
 >>console.log(counter.count); // Выведет: undefined
 >>```
+>
+>> ###### Пример замыкания без возврата фукнции (просто возвращаем обьект)
+>>>[!example]
+>>>```js
+>>>function createCounter() {
+>>>  let count = 0;
+>>>
+>>>  const counter = {
+>>>    increment() {
+>>>      count++;
+>>>      return count;
+>>>    },
+>>>    decrement() {
+>>>      count--;
+>>>      return count;
+>>>    },
+>>>    getCount() {
+>>>     return count;
+>>>    }
+>>>  };
+>>>
+>>> return counter;
+>>>}
+>>>
+>>>const counterInstance = createCounter();
+>>>console.log(counterInstance.increment()); // 1
+>>>console.log(counterInstance.getCount());  // 1
+>>>
+>>>```
+
+
 # каррирование
 > [!help] 
 >>[!quote]
