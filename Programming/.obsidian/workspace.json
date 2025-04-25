@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/Theory/JS 💻.md",
+                "file": "Programming/Theory/WEB🌐.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JS 💻"
+              "title": "WEB🌐"
             }
           }
         ],
@@ -192,10 +192,10 @@
   },
   "active": "65fd949c8c63bfc7",
   "lastOpenFiles": [
+    "Programming/Theory/JS 💻.md",
     "Programming/Theory/CSS 🎨.md",
     "Programming/Theory/HTML📄.md",
     "Programming/Theory/WEB🌐.md",
-    "Programming/Theory/JS 💻.md",
     "Programming/Theory/TS.md",
     "Programming/Theory/ООП.md",
     "Programming/Theory/SOLID.md",
