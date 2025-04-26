@@ -79,5 +79,9 @@
   "Programming/Theory/TS.md": {
     "iconName": "LiText",
     "iconColor": "#2f9198"
+  },
+  "Programming/Theory/nestJS 🐱.md": {
+    "iconName": "LiText",
+    "iconColor": "#33979e"
   }
 }
